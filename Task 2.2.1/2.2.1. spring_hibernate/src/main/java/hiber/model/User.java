@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@NamedEntityGraph(name = "users_entity-graph", attributeNodes = @NamedAttributeNode("userCar"))
+
 public class User {
 
    @Id
@@ -72,5 +74,13 @@ public class User {
 
    public void setUserCar(Car userCar) {
       this.userCar = userCar;
+   }
+
+   @Override
+   public String toString() {
+
+      return "Id = " + id + "\nFirst Name = " + firstName +
+              "\nLast Name = " + lastName + "\nEmail = " + email +
+              "\nCar = " + userCar + "\n";
    }
 }
